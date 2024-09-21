@@ -1,5 +1,6 @@
 import JSX from './JSX';
 import Props from './Props';
+import State from './State';
 
 function App() {
   const count = 1;
@@ -12,6 +13,14 @@ function App() {
 
      <Props />
      <br/>
+
+     <State />
+     <br/>
+
+
+
+
+
      <br/>
      <br/>
     </>
