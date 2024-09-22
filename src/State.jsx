@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Typography from './components/Typography';
 
 /* State
 - Initial value is boolean, or array, or object, or string ...
@@ -47,7 +48,9 @@ function State() {
 
   return (
     <div>
-      <h1>State</h1>
+      <h1>
+        <Typography text="State" />
+      </h1>
       First Name: {firstName} <br />
       Message: {message.text} <br />
       Author: {message.author} <br />

@@ -1,6 +1,10 @@
 import JSX from './JSX';
 import Props from './Props';
 import State from './State';
+import Component from './Component';
+import ComposeComponentTony from './sampleApp/ComposeComponentTony/ComposeComponentTony';
+import ConditionalRendering from './ConditionalRendering';
+
 
 function App() {
   const count = 1;
@@ -17,7 +21,13 @@ function App() {
      <State />
      <br/>
 
+     <Component />
 
+     <br />
+     <ComposeComponentTony />
+
+      <br />
+      <ConditionalRendering />
 
 
 

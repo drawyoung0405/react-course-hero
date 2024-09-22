@@ -1,4 +1,5 @@
 import React from 'react';
+import Typography from './components/Typography';
 
 /* props
 - pass props from parent to child
@@ -93,7 +94,9 @@ function Props() {
   }
   return (
     <div>
-      <h1>Props</h1>
+      <h1>
+        <Typography text="Props" />
+      </h1>
       <Welcome 
         name="tony" // string
         email="tony@gmail.com" // string
