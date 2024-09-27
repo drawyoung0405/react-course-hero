@@ -1,3 +1,35 @@
 .typography {
   font-weight: bold;
 }
+
+/* Loc */
+.compose {
+  width: 350px;
+  height: 100px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.title {
+  font-size: 20px;
+  padding: 5px;
+  color: #fff;
+  background-color: #fbbf24;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+.btn__increment {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border : 1px solid #0000004e;
+  background-color: #fff;
+  transition: all 0.3s ease-in;
+  font-size: 16px;
+}
+.btn__increment:hover{
+  background-color: #94a3b8;
+  color: #fff;
+}

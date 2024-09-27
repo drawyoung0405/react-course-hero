@@ -3,6 +3,7 @@ import Props from './Props';
 import State from './State';
 import Component from './Component';
 import ComposeComponentTony from './sampleApp/ComposeComponentTony/ComposeComponentTony';
+import ComposeComponentLoc from './sampleApp-DuyLoc/ComposeComponentLoc';
 import ConditionalRendering from './ConditionalRendering';
 
 
@@ -25,6 +26,9 @@ function App() {
 
      <br />
      <ComposeComponentTony />
+
+     <br />
+     <ComposeComponentLoc />
 
       <br />
       <ConditionalRendering />
