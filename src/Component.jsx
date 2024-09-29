@@ -52,7 +52,7 @@ function Component() {
 
   return (
     <div>
-      <h1>Parent Component</h1>
+      <h1 className='heading'>Parent Component</h1>
       Count: {count} 
       <button type='button' onClick={updateCount}>Update Count</button>
       <br />

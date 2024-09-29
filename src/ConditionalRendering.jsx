@@ -31,6 +31,17 @@ function ConditionalRendering() {
     2. true -> false
   */
   console.log('ConditionalRendering isAuth: ', isAuth)
+
+  function addTodo() {
+    setTodo('tony' + Date.now().toString())
+  }
+
+  function renderButton() {
+    return (
+      <button type="button">render button</button>
+    )
+  }
+
   return (
     <div>
       <h1>ConditionalRendering</h1>
@@ -47,13 +58,13 @@ function ConditionalRendering() {
       <h3>Tenary conditional - ? :</h3>
       <button 
         type="button" 
-        onClick={() =>{
-          setTodo('tony' + Date.now().toString())
-        }}
+        onClick={addTodo}
       >
         Update Todo</button>
 
       {todo ? <div>this is todo</div> : <div>this is no data</div>}
+      <br />
+      {renderButton()}
     </div>
   )
 }
