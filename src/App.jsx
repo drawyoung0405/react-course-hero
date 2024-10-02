@@ -3,10 +3,12 @@ import Props from './Props';
 import State from './State';
 import Component from './Component';
 import ComposeComponentTony from './sampleApp/ComposeComponentTony/ComposeComponentTony';
-import ComposeComponentLoc from './sampleApp-DuyLoc/ComposeComponentLoc';
+import ComposeComponentLoc from './sampleApp-DuyLoc/sampleApp-ComposeComponent/ComposeComponentLoc';
 import ConditionalRendering from './ConditionalRendering';
 import List from './List';
 import CSS from './CSS';
+import GuestGreeting from './sampleApp-DuyLoc/sampleApp-GuestGreeting-Loc/GuestGreeting';
+import Box from './sampleApp-DuyLoc/sampleApp-GenerateBox/Box';
 
 function App() {
   const count = 1;
@@ -39,6 +41,12 @@ function App() {
 
       <br />
       <CSS />
+      
+      <br />
+      <GuestGreeting />
+
+      <br />
+      <Box />
 
 
 

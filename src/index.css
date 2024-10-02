@@ -33,3 +33,25 @@
   background-color: #94a3b8;
   color: #fff;
 }
+.btn--login,
+.btn--logout{
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+.box{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+.box__item{
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
