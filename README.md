@@ -56,7 +56,13 @@ $ git checkout -b feature/{name ticket}
 # check status branch
 $ git status
 
-# add file changed
+# add file staged changed
 $ git add .
+
+# commit code
+$ git commit -m "comment"
+
+# push code
+$ git push
 ```
 
