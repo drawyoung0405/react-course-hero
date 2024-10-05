@@ -1,3 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 20px;
+}
+
+h1 {
+  text-decoration: underline;
+  font-size: 30px;
+}
+
 .typography {
   font-weight: bold;
 }

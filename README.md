@@ -64,5 +64,7 @@ $ git commit -m "comment"
 
 # push code
 $ git push
-```
 
+# create PR (pull request)/MR (merge request)
+- click Pull Request -> click New Pull Request
+```
