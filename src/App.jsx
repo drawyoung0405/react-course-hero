@@ -9,6 +9,7 @@ import List from './List';
 import CSS from './CSS';
 import GuestGreeting from './sampleApp-DuyLoc/sampleApp-GuestGreeting-Loc/GuestGreeting';
 import Box from './sampleApp-DuyLoc/sampleApp-GenerateBox/Box';
+import Form from './Form';
 
 function App() {
   const count = 1;
@@ -48,6 +49,8 @@ function App() {
       <br />
       <Box />
 
+      <br />
+      <Form />
 
 
      <br/>
