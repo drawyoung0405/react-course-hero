@@ -29,3 +29,34 @@ $ yarn add {name packge} -> yarn add is-odd
 $ npm install --save-dev {name packge} -> npm install --save-dev is-odd
 $ yarn add --D {name packge} -> yarn add --D is-odd
 ```
+
+## git flow
+
+### Branch
+- main/master: live to PRODUCTION
+- qc: for Tester
+- develop: for dev
+
+```bash
+# checkout new branch from current branch
+$ git checkout -b {name branch}
+
+# switch branch
+$ git checkout {name branch}
+```
+### Step to step to implement
+
+```bash
+# get lasted code from remote branch
+$ git pull
+
+# checkout new branch from current branch
+$ git checkout -b feature/{name ticket}
+
+# check status branch
+$ git status
+
+# add file changed
+$ git add .
+```
+
