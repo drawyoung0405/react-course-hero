@@ -68,3 +68,30 @@ $ git push
 # create PR (pull request)/MR (merge request)
 - click Pull Request -> click New Pull Request
 ```
+
+
+## Coding convention
+### Naming convention
+
+```bash
+# camelCase
+Eg: sortByTitle, product, productList ...
+Used: name function, name variables, name file ...
+
+# kebeb-case
+Eg: product-list, product, product-add ...
+Used: route (path name), name file
+
+# snake_case
+Eg: first_name, last_name, name ...
+Used: name variables, define schema ...
+
+# PascalCase
+Eg: ProductItem, ProductForm, Product ...
+Used: name react component.
+
+# UPPERCASE
+Eg: THEME, COLORS, URL ...
+Used: constant variable ...
+
+```
