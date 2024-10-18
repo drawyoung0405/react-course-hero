@@ -15,6 +15,8 @@ import { ProductList } from './pages/product/list';
 import StateHook from './StateHook';
 import SharingComponent from './pages/sharing-component'
 import EffectHook from './EffectHook';
+import ActiveTabComponent from './sampleApp-DuyLoc/ActiveTab/ActiveTabComponent';
+import AccordionComponent from './sampleApp-DuyLoc/Accordion/AccordionComponent';
 
 function App() {
   const count = 1;
@@ -71,6 +73,11 @@ function App() {
       <button type="button" onClick={() => setUnmountEffectHook(prevState => !prevState)}>Unmount effect hook</button>
       {unmountEffectHook  && <EffectHook />}
       
+      <br />
+      <ActiveTabComponent />
+
+      <br />
+      <AccordionComponent />
 
      <br/>
      <br/>

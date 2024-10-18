@@ -1,4 +1,3 @@
-
 * {
   margin: 20px;
 }
@@ -34,29 +33,29 @@ h1 {
   margin: 10px;
   border-radius: 5px;
   cursor: pointer;
-  border : 1px solid #0000004e;
+  border: 1px solid #0000004e;
   background-color: #fff;
   transition: all 0.3s ease-in;
   font-size: 16px;
 }
-.btn__increment:hover{
+.btn__increment:hover {
   background-color: #94a3b8;
   color: #fff;
 }
 .btn--login,
-.btn--logout{
+.btn--logout {
   width: 100px;
   height: 30px;
   cursor: pointer;
 }
-.box{
+.box {
   display: flex;
   flex-direction: row;
   gap: 30px;
   margin-top: 50px;
   flex-wrap: wrap;
 }
-.box__item{
+.box__item {
   width: 100px;
   height: 100px;
   display: flex;
