@@ -1,4 +1,5 @@
 import React from "react";
+import randomColor from "../../utils/randomColor";
 
 function Box() {
   const [count, setCount] = React.useState(0);
@@ -12,10 +13,6 @@ function Box() {
     setBox(newBox);
   }
 
-  function randomColor() {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
-  }
-
   const changeColor = (id) => {
     setBox((prevBox) =>
       prevBox.map((items) =>
@@ -23,6 +20,7 @@ function Box() {
       )
     );
   };
+
   return (
     <>
       <h1>Sample App - GenerateBox Loc</h1>

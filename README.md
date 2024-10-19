@@ -29,3 +29,69 @@ $ yarn add {name packge} -> yarn add is-odd
 $ npm install --save-dev {name packge} -> npm install --save-dev is-odd
 $ yarn add --D {name packge} -> yarn add --D is-odd
 ```
+
+## git flow
+
+### Branch
+- main/master: live to PRODUCTION
+- qc: for Tester
+- develop: for dev
+
+```bash
+# checkout new branch from current branch
+$ git checkout -b {name branch}
+
+# switch branch
+$ git checkout {name branch}
+```
+### Step to step to implement
+
+```bash
+# get lasted code from remote branch
+$ git pull
+
+# checkout new branch from current branch
+$ git checkout -b feature/{name ticket}
+
+# check status branch
+$ git status
+
+# add file staged changed
+$ git add .
+
+# commit code
+$ git commit -m "comment"
+
+# push code
+$ git push
+
+# create PR (pull request)/MR (merge request)
+- click Pull Request -> click New Pull Request
+```
+
+
+## Coding convention
+### Naming convention
+
+```bash
+# camelCase
+Eg: sortByTitle, product, productList ...
+Used: name function, name variables, name file ...
+
+# kebeb-case
+Eg: product-list, product, product-add ...
+Used: route (path name), name file
+
+# snake_case
+Eg: first_name, last_name, name ...
+Used: name variables, define schema ...
+
+# PascalCase
+Eg: ProductItem, ProductForm, Product ...
+Used: name react component.
+
+# UPPERCASE
+Eg: THEME, COLORS, URL ...
+Used: constant variable ...
+
+```
