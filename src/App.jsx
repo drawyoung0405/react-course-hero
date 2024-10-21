@@ -17,6 +17,7 @@ import SharingComponent from './pages/sharing-component'
 import EffectHook from './EffectHook';
 import ActiveTabComponent from './sampleApp-DuyLoc/ActiveTab/ActiveTabComponent';
 import AccordionComponent from './sampleApp-DuyLoc/Accordion/AccordionComponent';
+import Movie from './Movie';
 
 function App() {
   const count = 1;
@@ -78,6 +79,9 @@ function App() {
 
       <br />
       <AccordionComponent />
+
+      <br />
+      <Movie />
 
      <br/>
      <br/>

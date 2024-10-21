@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMovieContext } from './contexts/MovieContext';
 
 /* useLayoutEffect, useEffect
 - clean up function use effect
@@ -11,6 +12,9 @@ function EffectHook() {
   const [counter, setCounter] = React.useState(1);
   const [todos, setTodos] = React.useState([]);
   const [id, setId] = React.useState(1);
+  const { temps } = useMovieContext();
+
+  console.log('----------context: ', temps)
 
   React.useEffect(() => {
     console.log('run useEffect with empty dependency');
