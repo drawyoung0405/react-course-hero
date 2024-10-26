@@ -2,7 +2,15 @@ import React from 'react'
 import { useMovieContext } from '../../contexts/MovieContext'
 
 function MovieList() {
-  const { movies } = useMovieContext();
+  const { movies, isLoading } = useMovieContext();
+
+  if(isLoading) {
+    return (
+      <div>
+        Loading...
+      </div>
+    )
+  }
 
   return (
     <div>
