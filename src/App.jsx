@@ -17,6 +17,7 @@ import SharingComponent from './pages/sharing-component'
 import EffectHook from './EffectHook';
 import ActiveTabComponent from './sampleApp-DuyLoc/ActiveTab/ActiveTabComponent';
 import AccordionComponent from './sampleApp-DuyLoc/Accordion/AccordionComponent';
+import JobBoard from './sampleApp-DuyLoc/JobBoard/JobBoard';
 
 function App() {
   const count = 1;
@@ -81,6 +82,9 @@ function App() {
 
      <br/>
      <br/>
+     
+     <br />
+     <JobBoard />
     </>
   )
 }
