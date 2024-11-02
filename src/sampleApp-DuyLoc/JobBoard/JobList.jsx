@@ -1,9 +1,9 @@
 import React from "react";
 
-function JobList({ dataList, hasMore, contentJob, loading }) {
+function JobList({ loading, hideLoadMore, jobs, handleLoadMore }) {
   return (
     <>
-      {contentJob.map((item) => {
+      {jobs.map((item) => {
         return (
           <div
             className="w-full border border-gray-500 ml-0 rounded-md"
@@ -27,11 +27,11 @@ function JobList({ dataList, hasMore, contentJob, loading }) {
           Loading...
         </button>
       )}
-      {hasMore && !loading && (
+      {hideLoadMore && !loading && (
         <button
           type="button"
           className="bg-[#FC6501] px-2.5 py-2.5 text-white rounded-md hover:bg-[#E65C01]"
-          onClick={() => dataList()}
+          onClick={handleLoadMore}
         >
           Load more jobs
         </button>

@@ -1,63 +1,67 @@
 import React from "react";
 import JobList from "./JobList";
 
+const PAGE_SIZE = 5;
+
 function JobBoard() {
-    const [idJob, setIdJob] = React.useState([]);
-    const [contentJob, setContentJob] = React.useState([]);
-    const [startIndex, setStartIndex] = React.useState(0);
-    const [loading, setLoading] = React.useState(false);
-    const visibleItem = 4;
-  
-    React.useEffect(() => {
-      try {
-        async function getId() {
-          const res = await fetch(
-            "https://hacker-news.firebaseio.com/v0/jobstories.json"
-          );
-          const dataId = await res.json();
-          setIdJob(dataId);
-        }
-        getId();
-      } catch (err) {
-        console.log(err);
-      }
-    }, []);
-  
-    React.useEffect(() => {
-      try {
-        async function getContent() {
-          setLoading(true);
-          const visibleId = idJob.slice(0, startIndex + visibleItem);
-          const contentData = await Promise.all(
-            visibleId.map(async (id) => {
-              const contentResponse = await fetch(
-                `https://hacker-news.firebaseio.com/v0/item/${id}.json`
-              );
-              return await contentResponse.json();
-            })
-          );
-          setTimeout(() => {
-            setLoading(false);
-          }, 500);
-          setContentJob(contentData);
-        }
-        getContent();
-      } catch (err) {
-        console.log(err);
-      }
-    }, [idJob, startIndex]);
-    function dataList() {
-      setStartIndex((prev) => prev + visibleItem);
+  const [idJobs, setIdJobs] = React.useState([]);
+  const [jobs, setJobs] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
+
+  async function fetchJobIds(currPage) {
+    let jobs = idJobs;
+    if (jobs.length === 0) {
+      const res = await fetch("https://hacker-news.firebaseio.com/v0/jobstories.json");
+      const data = await res.json();
+      jobs = data;
+      setIdJobs(jobs);
     }
-    const hasMore = idJob.length > startIndex + visibleItem;
+
+    // page 0: start = 0, 5
+    // page 1: start = 5, 10
+    const start = currPage * PAGE_SIZE; 
+    const end = start + PAGE_SIZE;
+    return jobs.slice(start, end)
+  }
+
+  async function fetchJobs(currPage) {
+    const jobIdsForPage = await fetchJobIds(currPage) ; // [1,2,3,4]
+    setLoading(true);
+    const contentData = await Promise.all(
+      jobIdsForPage.map(async (id) => {
+        const contentResponse = await fetch(
+          `https://hacker-news.firebaseio.com/v0/item/${id}.json`
+        );
+        const data = await contentResponse.json();
+        return data
+      })
+    );
+    setJobs(prevState => ([...prevState, ...contentData]))
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }
+
+  function handleLoadMore() {
+    setPage(prevState => prevState + 1);
+  }
+
+  React.useEffect(() => {
+    fetchJobs(page);
+  }, [page]);
+  
+  const hideLoadMore = idJobs.length > jobs.length;
+
   return (
     <>
       <h1 className="no-underline text-[#FC6501] font-semibold">Jobs Board</h1>
       <JobList 
-        dataList={dataList}
-        hasMore={hasMore}
-        contentJob={contentJob}
-        loading={loading} />
+        jobs={jobs}
+        hideLoadMore={hideLoadMore}
+        loading={loading} 
+        handleLoadMore={handleLoadMore}
+      />
     </>
   );
 }
