@@ -18,6 +18,7 @@ import EffectHook from './EffectHook';
 import ActiveTabComponent from './sampleApp-DuyLoc/ActiveTab/ActiveTabComponent';
 import AccordionComponent from './sampleApp-DuyLoc/Accordion/AccordionComponent';
 import JobBoard from './sampleApp-DuyLoc/JobBoard/JobBoard';
+import RefHook from './RefHook';
 
 function App() {
   const count = 1;
@@ -85,6 +86,15 @@ function App() {
      
      <br />
      <JobBoard />
+
+     <br />
+     <RefHook />
+
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
     </>
   )
 }
