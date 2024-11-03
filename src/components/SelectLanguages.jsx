@@ -1,16 +1,12 @@
 import React from 'react'
 import { Select } from 'antd';
 
-function SelectLanguages({ name, setName }) {
+function SelectLanguages() {
 
   return (
     <div>
       <Select
-        value={name}
         style={{ width: 300 }}
-        onChange={(value) => {
-          setName(value)
-        }}
         options={[
           { value: 'javascript', label: 'Javascript' },
           { value: 'react', label: 'React' },

@@ -4,8 +4,6 @@ import SelectLanguages from './components/SelectLanguages';
 import { Select } from 'antd';
 
 function UseImperativeHandle() {
-  const [name, setName] = React.useState('');
-
   console.log('ImperativeHandle render')
 
   return (
@@ -17,7 +15,7 @@ function UseImperativeHandle() {
       >
         Languages: {name || 'N/A'} <DownOutlined />
       </div>
-      <SelectLanguages name={name} setName={setName} />
+      <SelectLanguages />
     </div>
   )
 }
