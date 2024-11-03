@@ -20,6 +20,7 @@ import AccordionComponent from './sampleApp-DuyLoc/Accordion/AccordionComponent'
 import Movie from './Movie';
 import JobBoard from './sampleApp-DuyLoc/JobBoard/JobBoard';
 import RefHook from './RefHook';
+import UseImperativeHandle from './UseImperativeHandle';
 
 function App() {
   const count = 1;
@@ -93,6 +94,9 @@ function App() {
 
      <br />
      <RefHook />
+
+     <br />
+     <UseImperativeHandle />
 
      <br />
      <br />
