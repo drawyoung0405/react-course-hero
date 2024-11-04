@@ -21,6 +21,7 @@ import Movie from './Movie';
 import JobBoard from './sampleApp-DuyLoc/JobBoard/JobBoard';
 import RefHook from './RefHook';
 import UseImperativeHandle from './UseImperativeHandle';
+import PerformanceHook from './PerformanceHook';
 
 function App() {
   const count = 1;
@@ -97,6 +98,10 @@ function App() {
 
      <br />
      <UseImperativeHandle />
+
+
+     <br />
+     <PerformanceHook />
 
      <br />
      <br />
