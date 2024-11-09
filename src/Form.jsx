@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+import { useResize } from './hooks/useResize';
 
 /*
 uncontroller input/components
@@ -13,6 +15,7 @@ controller input/components
 */
 
 function Form() {
+  const { isSmallScreen } = useResize();
   const firstNameRef = React.useRef(null);
   const [form, setForm] = React.useState({
     lastName: '',
@@ -38,8 +41,9 @@ function Form() {
       }
     })
   }
+  
 
-  console.log('Form re-render...')
+  console.log('Form re-render...', isSmallScreen)
 
   return (
     <div>
