@@ -64,3 +64,24 @@ h1 {
   cursor: pointer;
   border-radius: 5px;
 }
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu li + li {
+  padding: 0 10px;
+}
+
+.menu li a{
+  text-decoration: none;  
+}
+
+.menu li a.active{
+  text-decoration: underline;  
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 
 /* 
@@ -28,10 +29,18 @@ function Player({ multiple }) {
 
 
 function Component() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = useParams();
   const [count, setCount] = React.useState(0);
   const [multiple, setMultiple] = React.useState(2);
   console.log('-------------------------')
-  console.log('Parent Component render')
+  console.log('Parent Component render', {
+    location,
+    params
+  })
+
+  const isUser = location.pathname.includes('/component');
 
   // first render -> memory A. re-render -> memory N
   function updateCount() {
@@ -50,6 +59,10 @@ function Component() {
     })
   }
 
+  function gotoPropsPage() {
+    navigate('/props')
+  }
+
   return (
     <div>
       <h1 className='heading'>Parent Component</h1>
@@ -66,8 +79,26 @@ function Component() {
       </button>
 
       <Player key={count} multiple={multiple} />
+
+      <br /><br />
+      This is component path: {isUser ? "true" : "false"}
+      <br/><br/>
+      <button type="button" onClick={gotoPropsPage}>Go to Props</button>
     </div>
   )
 }
 
 export default Component
+
+/*
+list: show list todos
+
+todo detail:
+Route path="todo/:id"
+
+const { id } = useParams();
+call api/get-todo/${todoId}
+ - show todo
+
+
+*/
