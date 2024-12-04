@@ -24,6 +24,8 @@ import UseImperativeHandle from './UseImperativeHandle';
 import PerformanceHook from './PerformanceHook';
 import CustomHook from './CustomHook';
 import { Link, NavLink, Route, Routes } from 'react-router-dom';
+import TrafficLight from './sampleApp-DuyLoc/TrafficLight/TrafficLight';
+import Autocomplete from './sampleApp-DuyLoc/Autocomplete/Autocomplete';
 
 function App() {
   const count = 1;
@@ -118,6 +120,14 @@ function App() {
      
      <br />
      <JobBoard />
+
+     <br/>
+     <br/>
+     <TrafficLight />
+
+     <br />
+     <br />
+     <Autocomplete />
 
      <br />
      <RefHook />
