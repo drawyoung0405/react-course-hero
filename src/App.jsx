@@ -26,6 +26,7 @@ import CustomHook from './CustomHook';
 import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import TrafficLight from './sampleApp-DuyLoc/TrafficLight/TrafficLight';
 import Autocomplete from './sampleApp-DuyLoc/Autocomplete/Autocomplete';
+import Invoice from './sampleApp-DuyLoc/InvoiceRoute/Invoice';
 
 function App() {
   const count = 1;
@@ -128,6 +129,10 @@ function App() {
      <br />
      <br />
      <Autocomplete />
+
+     <br />
+     <br />
+     <Invoice />
 
      <br />
      <RefHook />
