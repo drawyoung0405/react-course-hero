@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMovieContext } from './contexts/MovieContext';
 
 /* useLayoutEffect, useEffect
 - clean up function use effect
@@ -9,10 +10,21 @@ import React from 'react';
 
 function EffectHook() {
   const [counter, setCounter] = React.useState(1);
+  const [todos, setTodos] = React.useState([]);
   const [id, setId] = React.useState(1);
+  const { temps } = useMovieContext();
+
+  console.log('----------context: ', temps)
 
   React.useEffect(() => {
     console.log('run useEffect with empty dependency');
+
+    async function fetchTodos() {
+      const res = await fetch('https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app/api/todo');
+      const data = await res.json();
+      setTodos(data.data);
+    }
+    fetchTodos();
 
     return () => {
       console.log('run useEffect empty dependency clean up function');
@@ -72,6 +84,14 @@ function EffectHook() {
       <h1>EffectHook</h1>
       Counter: {counter} <br />
       <button type="button" onClick={incrementCounter}>Increment Counter</button>
+
+      <h2><b>List Todos</b></h2>
+      <div>
+        {todos.map(item => (
+          <div key={item._id}>Title: {item.title}</div>
+        ))}
+      </div>
+
     </div>
   )
 }

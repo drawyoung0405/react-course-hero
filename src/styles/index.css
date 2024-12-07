@@ -1,5 +1,4 @@
-
-* {
+body {
   margin: 20px;
 }
 
@@ -34,29 +33,29 @@ h1 {
   margin: 10px;
   border-radius: 5px;
   cursor: pointer;
-  border : 1px solid #0000004e;
+  border: 1px solid #0000004e;
   background-color: #fff;
   transition: all 0.3s ease-in;
   font-size: 16px;
 }
-.btn__increment:hover{
+.btn__increment:hover {
   background-color: #94a3b8;
   color: #fff;
 }
 .btn--login,
-.btn--logout{
+.btn--logout {
   width: 100px;
   height: 30px;
   cursor: pointer;
 }
-.box{
+.box {
   display: flex;
   flex-direction: row;
   gap: 30px;
   margin-top: 50px;
   flex-wrap: wrap;
 }
-.box__item{
+.box__item {
   width: 100px;
   height: 100px;
   display: flex;
@@ -64,4 +63,65 @@ h1 {
   align-items: center;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu li + li {
+  padding: 0 10px;
+}
+
+.menu li a{
+  text-decoration: none;  
+}
+
+.menu li a.active{
+  text-decoration: underline;  
+}
+
+/* CSS Traffic Light */
+.traffic-container {
+  width: 66px;
+  height: 182px;
+  background-color: black;
+  border-radius: 15px;
+}
+.traffic-light-container {
+  border-radius: 15px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.traffic-light {
+  width: 50px;
+  height: 50px;
+  background-color: #555555;
+  border-radius: 50%;
+}
+
+/* Invoice */
+.menu-book {
+  display: block;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+.menu-book ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 15px;
+  padding-left: 0;
+}
+.menu-book ul li {
+  border-right: 2px solid black;
+  padding-right: 5px;
 }
