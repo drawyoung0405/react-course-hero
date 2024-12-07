@@ -1,12 +1,13 @@
 import React, { useRef } from 'react'
 
 function Autocomplete() {
-    const [countries, setCountries] = React.useState([]);
+    const [, setCountries] = React.useState([]);
     const [searchTerm, setSearchTerm] = React.useState("");
     const [loading, setIsLoading] = React.useState(false);
     const timeoutRef = useRef(null);
 
-    const searchCountries = React.useCallback(async (countries) => {
+
+    const searchCountries = async (countries) => {
         if (!countries) {
             setCountries([]);
             return;
@@ -23,7 +24,7 @@ function Autocomplete() {
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -32,7 +33,6 @@ function Autocomplete() {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
-
         timeoutRef.current = setTimeout(() => {
             searchCountries(value);
         }, 500);
