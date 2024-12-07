@@ -106,3 +106,22 @@ h1 {
   background-color: #555555;
   border-radius: 50%;
 }
+
+/* Invoice */
+.menu-book {
+  display: block;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+.menu-book ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 15px;
+  padding-left: 0;
+}
+.menu-book ul li {
+  border-right: 2px solid black;
+  padding-right: 5px;
+}
