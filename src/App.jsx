@@ -27,6 +27,14 @@ import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import TrafficLight from './sampleApp-DuyLoc/TrafficLight/TrafficLight';
 import Autocomplete from './sampleApp-DuyLoc/Autocomplete/Autocomplete';
 import Invoice from './sampleApp-DuyLoc/InvoiceRoute/Invoice';
+import Authenticate from './Authenticate';
+import Login from './pages/authenticate/Login';
+import Register from './pages/authenticate/Register';
+import Product from './pages/authenticate/Product';
+import About from './pages/authenticate/About';
+import Account from './pages/authenticate/Account';
+import AuthRoute from './routes/AuthRoute';
+import GuestRoute from './routes/GuestRoute';
 
 function App() {
   const count = 1;
@@ -54,6 +62,9 @@ function App() {
         <li>
           <NavLink to="/compose-tony" replace>Compose Tony</NavLink>
         </li>
+        <li>
+          <NavLink to="/authenticate" replace>Authenticate</NavLink>
+        </li>
       </ul>
 
       <Routes>
@@ -68,6 +79,14 @@ function App() {
         <Route path='/compose-tony' element={ <ComposeComponentTony />}>
           <Route path='profile' element={<div>this is profile</div>} />
           <Route path='account' element={<div>this is account</div>} />
+        </Route>
+        <Route path="/authenticate" element={<Authenticate />}>
+          <Route path='login' element={<GuestRoute><Login /></GuestRoute>} />
+          <Route path='register' element={<GuestRoute><Register /></GuestRoute>} />
+          <Route path='product' element={<AuthRoute><Product /></AuthRoute>} />
+          <Route path='about' element={<About />} />
+          <Route path='account' element={<AuthRoute><Account /></AuthRoute>} />
+
         </Route>
       
       </Routes>

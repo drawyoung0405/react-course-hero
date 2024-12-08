@@ -95,3 +95,29 @@ Eg: THEME, COLORS, URL ...
 Used: constant variable ...
 
 ```
+
+# Authenticate & Authorize
+
+### Define
+CRUD -> create (post), read (get), update (patch/post), delete (delete)
+FE
+HR dashboard ()
+role
+- member: read/view (view show data)
+- manager: read/view, update, create
+- admin: CRUD
+
+// member A -> registered HR system -> login HR system -> no access permission
+
+BE:
+- read list: GET /products
+- read one: GET /product/1
+- update product: POST /product/1 
+- delete product: DELETE /product/1
+
+
+### Flow authenticate
+
+Login
+option 1:user A -> submit login -> call api BE -> BE return access_token -> go to pages
+option 2:user A -> submit login -> call api BE -> BE return access_token -> FE call api get user from access_token -> go to pages

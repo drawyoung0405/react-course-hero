@@ -13,7 +13,8 @@ for(let i = 0; i < 10; i++) {
 
 function LeaderboardMontly() {
   const { dataSource, limit, onChangeLimit } = useLeaderboard({
-    data
+    data,
+    apiUrl: 'https://jsonplaceholder.typicode.com/users'
   });
   
   return (

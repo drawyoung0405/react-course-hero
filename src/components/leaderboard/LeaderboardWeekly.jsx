@@ -13,7 +13,8 @@ for(let i = 0; i < 5; i++) {
 
 function LeaderboardWeekly() {
   const { dataSource, limit, onChangeLimit } = useLeaderboard({
-    data
+    data,
+     apiUrl: 'https://jsonplaceholder.typicode.com/photos'
   });
 
   return (
@@ -22,15 +23,15 @@ function LeaderboardWeekly() {
 
       <table border={1}>
         <tr>
-          <th>Name</th>
+          <th>Avatar</th>
           <th>Score</th>
         </tr>
 
         {dataSource.map(data => {
           return (
             <tr key={data.id}>
-              <td>{data.name}</td>
-              <td>{data.score}</td>
+              <td><img src={data.thumbnailUrl} alt="" /></td>
+              <td>{data.title}</td>
             </tr>
           )
         })}

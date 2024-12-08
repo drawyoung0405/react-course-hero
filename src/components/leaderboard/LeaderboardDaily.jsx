@@ -13,7 +13,8 @@ for(let i = 0; i < 10; i++) {
 
 function LeaderboardDaily() {
   const { dataSource, limit, onChangeLimit } = useLeaderboard({
-    data
+    data,
+    apiUrl: 'https://jsonplaceholder.typicode.com/todos'
   });
 
   return (
@@ -29,8 +30,8 @@ function LeaderboardDaily() {
         {dataSource.map(data => {
           return (
             <tr key={data.id}>
-              <td>{data.name}</td>
-              <td>{data.score}</td>
+              <td>{data.id}</td>
+              <td>{data.title}</td>
             </tr>
           )
         })}
