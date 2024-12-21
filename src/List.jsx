@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 /*
 Keys should probably not be just the item’s index 
@@ -30,8 +31,11 @@ const apiProducts = [
 ]
 
 function List() {
+  const todos = useSelector(state => state.todo.todos);
   const [users, setUsers] = React.useState(usersFiltered);
   const [products, setProducts] = React.useState(apiProducts)
+
+  console.log('list :', todos)
 
   function handleAddUser() {
     const userItem = {
@@ -82,6 +86,17 @@ function List() {
           </button>
         )
       })}
+
+      <h3>Todo from redux </h3>
+      <ul>
+        {todos.map((item, index) => {
+          return (
+            <div key={index}>
+              Todo title: {item.title}
+            </div>
+          )
+        })}
+      </ul>
     </div>
   )
 }
