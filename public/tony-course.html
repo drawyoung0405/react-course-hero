@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tony Course</title>
+
+    
+  </head>
+  <body>
+
+    <div id="todosContent"></div>
+
+    
+   <script type="text/javascript">
+      /* 1. Các kiểu dữ liệu trong javascript 
+        Anwser: Javascript có 2 kiểu dữ liệu
+          - kiểu nguyên thủy - primitive type: string, number, boolean, null, underfiend, and Symbol
+          - non-primitive: object, array, function ....
+
+        2. Các biến trong javascript
+        Anwser: 
+        - Có 3 loại biến - var, let, const
+        - var
+            - allow assgin
+            - hoisting
+            - global/local scope
+        let
+          - allow assign
+          - no hoisting
+          - global scope
+          - function/block scope
+        const
+          - no assign
+          - no hoisting
+          - global scope
+          - function/block scope
+
+        3. hoisting la gì?
+          - var
+          - nó sẽ đưa tất cả khai báo biến var, function lên đầu file
+          - có thể access biến or thực thi function trước khi khởi tạo.
+
+        4. tag <script>, or <script async>, or <script defer>
+
+        5. tham chiếu - reference , tham tri - value
+        - tham chiếu: so sánh các vùng nhớ ( còn lại là - function, object, array ....)
+        - tham trị:  so sánh các giá trị (kiểu nguyên thủy -primity)
+
+        6. shadow/deep clone - shallow/deep equality - so sánh nông  và so sánh sâu
+      */
+
+      console.log('before name: ', name);
+      var name = 'hoa';
+      // console.log('after name: ', name);
+
+      // shadow/deep equality
+      const object1 = {
+        firstName: 'tony',
+        lastName: 'nguyen',
+        address: {
+          name: 'tphcm'
+        }
+      }
+      const object2 = {
+        firstName: 'tony',
+        lastName: 'nguyen',
+        address: {
+          name: 'tphcm'
+        }
+      }
+
+      function equality(obj1, obj2) {
+        const keys1 = Object.keys(obj1);
+        const keys2 = Object.keys(obj2);
+        
+        if(keys1.length !== keys2.length) {
+          return false;
+        }
+
+        for (let key of keys1) {
+          if(obj1[key] !== obj2[key]) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+      console.log('shadow equality:', equality(object1, object2));
+
+      function isObject(value) {
+        return value !== null && typeof value === 'object';
+      }
+
+      // obj1 = { name: 'tphcm' }, obj2 = { name: 'tphcm' }
+      function deepEquality(obj1, obj2) {
+        const keys1 = Object.keys(obj1);
+        const keys2 = Object.keys(obj2);
+        
+        if(keys1.length !== keys2.length) {
+          return false;
+        }
+
+        for (let key of keys1) {
+          const val1 = obj1[key];
+          const val2 = obj2[key];
+          const areObjects = isObject(val1) && isObject(val2);
+          // val1 = { name: 'tphcm' }
+          // val2 = { name: 'tphcm' }
+          if(!areObjects && val1 !== val2 || areObjects && !deepEquality(val1, val2)) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+      console.log('deep equality:', deepEquality(object1, object2));
+
+      // shadow/deep clone
+      // const numbers = [1,2,3,4,5];  
+      // immutable, no side effect
+      const numbers = [
+        { title: 1 },
+        { title: 2 },
+        { title: 3 }
+      ]
+      function convertNumber() {
+        // const newNumbers = [...numbers]; // shadow clone
+        const newNumbers = JSON.parse(JSON.stringify(numbers)); // deep clone
+        // newNumbers[1] = 10;
+        newNumbers[1].title = 10;
+        return newNumbers
+      }
+      const newNumbers = convertNumber();
+      console.log('shallow clone: ', {
+        numbers,
+        newNumbers
+      })
+
+      // so sánh tham chiếu
+      const ob1 = {}; // memory A -> AB
+      const ob2 = ob1; // memory B -> AB
+      const ob3 = {};
+      ob2.title = 'tony'
+      console.log(ob1, ob2);
+
+
+      // single thread -> only process at the time.
+      let todos = [];
+      const todosContent = document.getElementById('todosContent');
+      
+      fetch('https://jsonplaceholder.typicode.com/todos?_limit=5&_page=1')
+        .then(res => res.json())
+        .then(data => {
+          todos = data;
+          todosContent.innerHTML = `Title: ${todos[0]?.title}`
+        });
+
+      // todos = []
+      // call api -> ? s -> success
+      // innerHTML
+
+      // todos = [] -> call api -> 5s -> success -> todos = has data
+
+      // promise
+      // then() method to use get value of promise
+      const promise1 = new Promise((resolve, reject) => {
+        resolve(5);
+      });
+
+      promise1.then(value => {
+        console.log('promise1: ', value)
+      })
+
+      const promiseApi = fetch('https://jsonplaceholder.typicode.com/todos?_limit=5&_page=1').then(res => res.json());
+      console.log('promiseApi: ', promiseApi)
+
+      promiseApi.then(value => {
+        console.log('promiseApi: ', value)
+      })
+
+      function fakeApi(api) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            fetch(api)
+              .then(res => res.json())
+              .then(value => reject('Error 505'))
+              .catch(error => reject(error))
+          }, 2000)
+        })
+      }
+
+      fakeApi('https://jsonplaceholder.typicode.com/todos?_limit=5&_page=1')
+        .then(value => {
+          console.log('fakeApi error: ', value)
+        })
+        .catch(error => {
+          console.log('fakeApi error: ', error)
+        })
+
+
+    </script>
+  </body>
+</html>
