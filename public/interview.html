@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tony Course</title>
+
+    
+  </head>
+  <body>
+
+    <div id="todosContent"></div>
+
+    
+   <script type="text/javascript">
+      /* 1. Các kiểu dữ liệu trong javascript 
+        Anwser: Javascript có 2 kiểu dữ liệu
+          - kiểu nguyên thủy - primitive type: string, number, boolean, null, underfiend, and Symbol
+          - non-primitive: object, array, function ....
+
+        2. Các biến trong javascript
+        Anwser: 
+        - Có 3 loại biến - var, let, const
+        - var
+            - allow assgin
+            - hoisting
+            - global/local scope
+        let
+          - allow assign
+          - no hoisting
+          - global scope
+          - function/block scope
+        const
+          - no assign
+          - no hoisting
+          - global scope
+          - function/block scope
+
+        3. hoisting la gì?
+          - var
+          - nó sẽ đưa tất cả khai báo biến var, function lên đầu file
+          - có thể access biến or thực thi function trước khi khởi tạo.
+
+        4. tag <script>, or <script async>, or <script defer>
+
+        5. tham chiếu - reference , tham tri - value
+        - tham chiếu: so sánh các vùng nhớ ( còn lại là - function, object, array ....)
+        - tham trị:  so sánh các giá trị (kiểu nguyên thủy -primity)
+
+        6. shadow/deep clone - shallow/deep equality - so sánh nông  và so sánh sâu
+      
+        */
+
+
+        /* REACT 
+        1. lifecycle react hook
+        - khi component first-render (mounting): render -> useLayoutEffect -> useEffect
+        - khi update state -> component re-render (updating): render -> clean up useLayoutEffect -> useLayoutEffect -> clean up useEffect -> useEffect
+        - khi component unmounting: clean up useLayoutEffect -> clean up useEffect
+
+        2. cách hoạt động của useEffect/useLayoutEffect
+        - useEffect thường dùng để xử lý side effect (fetching, addEventListener ...)
+        - nếu useEffect mà không có dependency  thì useEffect đó nó sẽ chạy lại mỗi khi component re-render, bao gồm lun first-render
+        - nếu useEffect có empty dependency thì nó sẽ chỉ chạy 1 lần duy chất khi component first-render
+        - nếu useEffect có values in dependency thì nó sẽ chạy lại mỗi khi values đó thay đổi.
+
+        3. giữa useEffect and useLayoutEffect. Thằng nào chạy trước.
+        - useLayoutEffect sẽ chạy trước useEffect
+
+        4.  khi nào sử dụng useLayoutEffect, sử dụng nó trong case nào.
+        - khi mà a muốn thay đổi vị trí của node DOM, thì a nên dùng useLayoutEffect. Bởi vì
+          nếu a dùng useEffect, sẽ có 1 hiện tượng nhấp nháy khi element đó bị dịch chuyển.
+        
+        5. giữa useEffect vs useLayoutEffect có gì  chạy giữ chúng ko?
+        - giữa useLayoutEffect vs useEffect sẽ có 1  bước là browser paint ở giữ 2 thằng. Browser paint là bước để định hình vị trí bố cục layout.
+
+        6. E có thể giải thích chi tiết browser paint là  gì ko?
+        - Ở đây mình sẽ phải biết về critical rendering path
+        - Khi html parse HTML DOM, css parse CSS DOM and javascript dc download xong. Thì lúc này sẽ chạy
+        đến phase render tree  -> layout -> paint
+        - phase render tree: là phase sẽ chứa tất cả node DOM mà sẵn sàng show ra UI. Eg: node A có display none, thì nó sẽ ko nằm trong render tree
+        - sau đó phase layout sẽ define các vị trí position, width, height, tính toán vị trí của node DOM để tạo 1 ra layout.
+        - rồi cuối cùng là phase paint là vẽ chúng. Eg tô màu, background color, color text ...
+          
+        7. React làm việc vs Virtual DOM như thế nào? Virtual DOM là gì?
+        - Virtual DOM là cây DOM dc tạo bởi javascript (document.getElementID('xx').innerHTML, ...)
+        - khi react render ra real dom, nó sẽ tạo ra 1 virtual DOM tương ứng trong bộ nhớ.
+        - khi mình update DOM -> react sẽ snapshot 1 virtualDOM từ lần trước đó và sẽ nó sẽ diff (so sánh) 2 virtual DOM này trong bộ nhớ.
+          Và sẽ render ra real DOM vs cái node thay đổi.
+
+        8. useContext la gì? or là bạn quản lý state như thế nào
+        - useContext bản chất là 1 local state của 1 vùng. Nó không phải là state management như redux.
+        - trong 1 ứng dụng react có thể có nhiều nested context vs nhau.
+
+        9. props drilling la gi? lifting state up là gì?
+        - props drilling ý nghĩa là a pass nested props nhiều cấp level vs nhau. Nó sẽ gây ra khó khăn trong việc trace data. A sẽ phải trace ngược lên 
+          để xem data nó nhận từ component nào. (chỉ sử dụng khi là quan hệ cha con).
+        - lifting state up nghĩa là từ  thằng con pass ngược tham số lên cho thằng cha sử dụng.
+
+        10. pure/stateless/presentation component
+        component đó chỉ đơn thuận nhận vào props và show ra UI dựa vào props đó. Do ko chứa state nên nó sẽ ko có code logic gì cả.
+          Component này thường dùng để reuse.
+        
+        11. stateful/container component
+          - component này sẽ chứa cả state và props vs nhau. Nên vì thế nó có cả code logic.
+          Nó cũng dc dùng để reuse, miễn sao chổ nó xài có cùng 1 code logic.
+
+        12. em dùng những thằng nào trong performance hook? performance hook dùng làm gì?
+        - E thường dùng useMemo, memo, useCallback
+        - E thường dùng những thằng này để prevent component re-render không cần thiết.
+        
+        13. memo là gì?
+        - memo là performance hook dùng để prevent component re-render không cần thiết.
+        - component đó chỉ re-render lại khi props thay đổi. Còn khi parent component re-render mà props ko đổi thì component đó
+          sẽ ko re-render.
+
+        13.1: memo có bao nhiêu tham số? or nếu a muốn chỉ dịnh props nào thay đổi thì component đó re-render thôi.
+          - memo có 2 tham số. Tham số thứ 2 của là 1 custom function dùng để quyết định component có re-render lại  hay ko.
+          - nếu như a muốn chỉ dịnh props nào thay đổi thì component đó re-render thôi, thì a có thể sử dụng tham số thứ 2.]
+
+        13.2: useCallback la gì?
+          - useCallback là performance hook dùng để prevent component re-render không cần thiết.
+          - dùng để memorize lại callback function
+          - nó sẽ tạo lại 1 call function mới khi dependency thay đổi
+
+        13.3: useMemo la gì?
+        - useMemo là performance hook dùng để prevent component re-render không cần thiết.
+        - dùng để memorize lại value
+        - nó sẽ tính toán lại khi dependency thay đổi
+        
+        13.4: em có nên lạm dụng những performance hook?
+        - Mình không nên lạm dụng nó. 
+        - Bởi vì react sẽ làm 2 công việc là so sánh props đó có đổi ko. Nếu ko đổi thì render từ bộ nhớ ra, còn đổi thì  render ra mới.
+
+        14: ref là gì?
+        - useRef dùng để truy cập vào node DOM trong jsx.
+        - useRef dùng để lưu trữ thông tin giữa mỗi lần component re-render.
+
+        15: forwardRef là gì?
+          - khi a pass ref vào trong 1 react component thì a phải sử dụng forwardRef
+        
+        16: useImperativeHandle là gì?
+          - dùng để tạo ra thêm nhiều method và chìa ra cho thằng ref sử dụng
+          
+        17. react portal là gì? khi nào or lý do nào lại dùng react portal
+        - react portal dùng để tạo ra 1 cái div mới cùng cấp vs div root.
+        - nếu a ko dùng react portal, thì có thể component của a sẽ bị che bởi component cha.
+        */
+
+
+        /* HTML CSS
+          1. CDN là gì?
+          - dùng để share load resource cho web của ta.
+          - dùng để tăng performance web .
+
+          2. web storage là  gì?
+          - dùng để lưu trữ thông tin ở phía client.
+          - nó gồm localstorage, sessionstorage, cookie.
+
+          3. local storage là gì?
+
+          4. session storage là gì?
+
+          5. authenticate and authorize là gì?
+
+          6. HTTP dùng làm gì? các method của nó?
+           - method: GET ( fetch data), POST (create new resource), DELETE (xóa resource), PUT (update resource)
+
+          7. jwt token là gì?
+
+          8. position absolute, relative, fixed, static, relative?
+
+          9. box model là gì?
+
+          10. html semantic la gì?
+            - html5: section, header, footer, arcticle ...
+        */
+
+
+
+    </script>
+  </body>
+</html>
